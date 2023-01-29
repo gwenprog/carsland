@@ -1,5 +1,6 @@
 <?php
 require_once('bdd.php');
+session_start();
 
 class connect {
     private $pseudo; 
@@ -17,7 +18,7 @@ class connect {
         $requete->execute(array('pseudo'=> $this->pseudo));
         $reponse = $requete->fetch();
         if($reponse){
-            if($this->password == $reponse['mdp']){
+            if($this->mdp == $reponse['mdp']){
                 return 'ok';
             }
             else {
@@ -32,10 +33,10 @@ class connect {
     }
     
     public function session(){
-        $requete = $this->bdd->prepare('SELECT id FROM membres WHERE username = :pseudo ');
+        $requete = $this->bdd->prepare('SELECT id_membre FROM membres WHERE pseudo = :pseudo ');
         $requete->execute(array('pseudo' => $this->pseudo));
         $requete = $requete->fetch();
-        $_SESSION['id'] = $requete['id'];
+        $_SESSION['id_membre'] = $requete['id_membre'];
         $_SESSION['pseudo'] = $this->pseudo;
         
         return 1;

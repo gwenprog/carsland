@@ -27,7 +27,7 @@ class inscription{
     
     public function verif(){
         
-        if(strlen($this->pseudo) > 5 AND strlen($this->pseudo) < 20 ){ /*Si le pseudo est bon*/
+        if(strlen($this->pseudo) > 3 AND strlen($this->pseudo) < 20 ){ /*Si le pseudo est bon*/
           
            $syntaxe = '#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#'; 
            if(preg_match($syntaxe,$this->email)){ /*email bon*/
@@ -43,7 +43,7 @@ class inscription{
                    }
                }
                else {/*Mauvais format du mot de passe*/
-                   $erreur = 'Le mot de passe doit contenir entre 5 et 20 caractères';
+                   $erreur = 'Le mot de passe doit contenir entre 4 et 20 caractères';
                    return $erreur;
                }
                
@@ -55,7 +55,7 @@ class inscription{
            }
         }
         else { /*Pseudo mauvais*/
-            $erreur = 'Le pseudu doit contenir entre 5 et 20 caractères';
+            $erreur = 'Le pseudo doit contenir entre 5 et 20 caractères';
             return $erreur;
         }
         
@@ -76,7 +76,7 @@ class inscription{
     }
     
     public function session(){
-        $requete = $this->bdd->prepare('SELECT id FROM membres WHERE username = :pseudo ');
+        $requete = $this->bdd->prepare('SELECT id_membre FROM membres WHERE username = :pseudo ');
         $requete->execute(array('pseudo'=>  $this->pseudo));
         $requete = $requete->fetch();
         $_SESSION['id'] = $requete['id'];

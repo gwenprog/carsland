@@ -1,4 +1,4 @@
-<?php session_start();require_once('../bdd.php'); ?>
+<?php session_start();require_once('../rangement/bdd.php'); ?>
 
 <!doctype html>
 <html lang="fr">
@@ -40,7 +40,7 @@
                     </li>
                     
                     <li class="nav-item active">
-                        <a class="nav-link" href="../PostInForum.php">Poster dans le forum <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="../rangement/PostInForum.php">Poster dans le forum <span class="sr-only">(current)</span></a>
                     </li>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Messages</a>
@@ -56,7 +56,7 @@
     </header>
 
     <main>
-        <h1>Bienvenue <?php echo $_SESSION['pseudo']; ?></h1>
+        <h1>Bienvenue <?php echo "Gwendal"; ?></h1>
         <div class="Widgets">
             
             <div class="forumpost"><h3>Post</h3></div>
